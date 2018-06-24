@@ -1,0 +1,30 @@
+---
+- name: Install IUS
+  yum:
+    name: https://centos7.iuscommunity.org/ius-release.rpm
+    state: present
+
+- name: Install python-related packages (RedHat)
+  yum: pkg={{ item }} state=latest
+  with_items:
+    - python36u
+    - python-devel
+    - python36u-devel
+    - python-setuptools
+    - python36u-setuptools
+  when: ansible_os_family == "RedHat"
+
+- name: Install pip
+  easy_install: name=pip
+
+- name: Install virtualenv
+  pip: name=virtualenvwrapper
+
+- name: Touch .bashrc
+  file: dest=/home/{{ user }}/.bashrc state=touch
+
+- name: Add WORKON_HOME to .bashrc
+  lineinfile: dest=/home/{{ user }}/.bashrc line='export WORKON_HOME=$HOME/.virtualenvs' regexp='^export WORKON_HOME'
+
+- name: Add virtualenvwrapper.sh to .bashrc
+  lineinfile: dest=/home/{{ user }}/.bashrc line='source /usr/bin/virtualenvwrapper.sh' regexp='virtualenvwrapper.sh$'

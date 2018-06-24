@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-12 text-right">
+            <button id="new-round" class="btn btn-danger">New round</button>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 15px">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">City</th>
+                    <th scope="col">Total</th>
+                    {% for round in rounds %}
+                        <th scope="col">Round {{ forloop.counter }}</th>
+                    {% endfor %}
+                    <th scope="col">Chance</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for d in data %}
+                    <tr {% if d.chance > 15 %}class="table-danger"{% endif %}>
+                        <td>{{ d.name }}</td>
+                        <td>{{ d.total }}</td>
+                        {% for round in d.rounds %}
+                            <td>{{ round }}</td>
+                        {% endfor %}
+                        <td>{{ d.chance|floatformat:2 }}%</td>
+                        <td>
+                            <button data-city="{{ d.name }}" class="btn btn-sm btn-info infect-city"><i
+                                    class="fas fa-plus"></i></button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    {{ block.super }}
+    <script>
+
+        function getCookie(name) {
+            var cookieValue = null
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';')
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i])
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1))
+                        break
+                    }
+                }
+            }
+            return cookieValue
+        }
+
+        var csrftoken = getCookie('csrftoken')
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method))
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken)
+                }
+            }
+        })
+
+        $(document).ready(function () {
+            $('.infect-city').click(function () {
+                var city = $(this).data("city")
+                $.ajax({
+                    url: "{% url 'infection_tracker:infect_city' %}",
+                    dataType: "json",
+                    data: {city: city},
+                    method: "POST",
+                    success: function (data) {
+                        location.reload()
+                    }
+                })
+            })
+            $('#new-round').click(function () {
+                $.ajax({
+                    url: "{% url 'infection_tracker:new_round' %}",
+                    method: "POST",
+                    success: function (data) {
+                        location.reload()
+                    }
+                })
+            })
+        })
+    </script>
+
+{% endblock %}

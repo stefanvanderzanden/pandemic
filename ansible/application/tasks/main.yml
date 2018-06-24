@@ -1,0 +1,3 @@
+---
+- name: Create virtualenv for pandemic
+  command: virtualenv /home/{{ user }}/.virtualenvs/pandemic -p python3.6 creates="/home/{{ user }}/.virtualenvs/pandemic"

@@ -1,0 +1,13 @@
+---
+- hosts: all
+  vars:
+    user: "vagrant"
+
+  roles:
+    - role: common
+      become: true
+
+    - role: python
+      become: true
+
+    - role: application

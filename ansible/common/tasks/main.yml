@@ -1,0 +1,28 @@
+---
+- name: Install epel-repo rpm
+  yum: name={{ item }} state=installed
+  with_items:
+    - epel-release
+
+- name: Install packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - python-psycopg2
+    - git
+    - patch
+    - gcc
+
+- name: Install usefull packages for Vagrant
+  yum: name={{ item }} state=installed
+  with_items:
+    - htop
+    - mlocate
+  when: user == "vagrant"
+
+- name: Install common packages redhat/centos
+  yum:
+    name: "@Development tools"
+    state: present
+  when: ansible_os_family == "RedHat"
+
+# TODO: Add disabling of firewalld

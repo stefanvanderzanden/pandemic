@@ -1,0 +1,11 @@
+.vagrant
+.idea
+
+*.sqlite3
+
+*.pyc
+
+.DS_Store
+
+local_settings.py
+static/

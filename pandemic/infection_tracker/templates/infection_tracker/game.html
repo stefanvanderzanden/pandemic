@@ -3,7 +3,7 @@
     {% csrf_token %}
     <div class="row">
         <div class="col-12 text-right">
-            <a href="#" class="btn btn-warning">New game</a>
+            <button id="new-round" class="btn btn-danger">New round</button>
         </div>
     </div>
     <div class="row" style="margin-top: 15px">
@@ -11,17 +11,28 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Game number</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Play</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Total</th>
+                    {% for round in rounds %}
+                        <th scope="col">Round {{ forloop.counter }}</th>
+                    {% endfor %}
+                    <th scope="col">Chance</th>
+                    <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for game in games %}
-                    <tr>
-                        <td>{{ game.pk }}</td>
-                        <td>{{ game.date }}</td>
-                        <td><a href="{% url 'infection_tracker:game' game.pk %}" class="btn btn-info">Play</a></td>
+                {% for d in data %}
+                    <tr {% if d.chance > 15 %}class="table-danger"{% endif %}>
+                        <td>{{ d.name }}</td>
+                        <td>{{ d.total }}</td>
+                        {% for round in d.rounds %}
+                            <td>{{ round }}</td>
+                        {% endfor %}
+                        <td>{{ d.chance|floatformat:2 }}%</td>
+                        <td>
+                            <button data-city="{{ d.name }}" class="btn btn-sm btn-info infect-city"><i
+                                    class="fas fa-plus"></i></button>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

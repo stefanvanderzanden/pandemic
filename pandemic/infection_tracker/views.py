@@ -102,7 +102,7 @@ class NewRound(View):
 class AddCityView(FormView):
     template_name = 'infection_tracker/add_city.html'
     form_class = AddNewCityForm
-    success_url = reverse_lazy('infection_tracker:list')
+    success_url = reverse_lazy('infection_tracker:overview')
 
     def form_valid(self, form):
         form.save()

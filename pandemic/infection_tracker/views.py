@@ -12,6 +12,11 @@ from infection_tracker.models import City, Round, InfectionCard
 class TableView(TemplateView):
     template_name = 'infection_tracker/overview.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        if Round.objects.all().count() == 0:
+            Round.objects.create(round_number=1)
+        return super(TableView, self).dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         total_cards = InfectionCard.objects.all().count()
         current_round = Round.objects.all().order_by('-round_number').first()

@@ -1,34 +1,46 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    {% csrf_token %}
-    <div class="row">
-        <div class="col-12 text-right">
-            <a href="#" class="btn btn-warning">New game</a>
-        </div>
+{% csrf_token %}
+<div class="row">
+    <div class="col-12 text-right">
+        <a href="{% url 'infection_tracker:add_city' %}" class="btn btn-warning">New city</a>
     </div>
-    <div class="row" style="margin-top: 15px">
-        <div class="col-12">
-            <table class="table table-hover">
-                <thead>
+</div>
+<div class="row" style="margin-top: 15px">
+    <div class="col-12">
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <th scope="col">Game number</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Play</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Cards</th>
+                    <th scope="col">Cards active</th>
+                    <th scope="col">Actions</th>
                 </tr>
-                </thead>
-                <tbody>
-                {% for game in games %}
+            </thead>
+            <tbody>
+                {% for city in object_list %}
                     <tr>
-                        <td>{{ game.pk }}</td>
-                        <td>{{ game.date }}</td>
-                        <td><a href="{% url 'infection_tracker:game' game.pk %}" class="btn btn-info">Play</a></td>
+                        <td>{{ city.name }}</td>
+                        <td>{{ city.infection_cards.count }}</td>
+                        <td>{{ city.active_cards.count }}</td>
+                        <td>
+                            <button data-city="{{ city.name }}" data-action="remove"
+                                    class="btn btn-sm btn-info update-city"><i
+                                    class="fas fa-minus"></i></button>
+                            <button data-city="{{ city.name }}" data-action="add"
+                                    class="btn btn-sm btn-info update-city"><i
+                                    class="fas fa-plus"></i></button>
+                        </td>
                     </tr>
                 {% endfor %}
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
+</div>
+
 {% endblock %}
+
 {% block javascript %}
     {{ block.super }}
     <script>
@@ -65,21 +77,16 @@
         })
 
         $(document).ready(function () {
-            $('.infect-city').click(function () {
+            $('.update-city').click(function () {
                 var city = $(this).data("city")
+                var action = $(this).data('action')
                 $.ajax({
-                    url: "{% url 'infection_tracker:infect_city' %}",
+                    url: "{% url 'infection_tracker:update_city' %}",
                     dataType: "json",
-                    data: {city: city},
-                    method: "POST",
-                    success: function (data) {
-                        location.reload()
-                    }
-                })
-            })
-            $('#new-round').click(function () {
-                $.ajax({
-                    url: "{% url 'infection_tracker:new_round' %}",
+                    data: {
+                        city: city,
+                        action: action
+                    },
                     method: "POST",
                     success: function (data) {
                         location.reload()
@@ -88,5 +95,4 @@
             })
         })
     </script>
-
 {% endblock %}

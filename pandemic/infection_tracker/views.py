@@ -1,30 +1,40 @@
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 from django.views.generic.base import View
 from operator import itemgetter
 
 from infection_tracker.forms import AddNewCityForm
-from infection_tracker.models import City, Round, InfectionCard
+from infection_tracker.models import City, Round, InfectionCard, Game
 
 
-class TableView(TemplateView):
+class Overview(TemplateView):
     template_name = 'infection_tracker/overview.html'
+
+    def get_context_data(self, **kwargs):
+        return super(Overview, self).get_context_data(
+            games=Game.objects.all().order_by('pk'),
+            **kwargs
+        )
+
+
+class GameView(TemplateView):
+    template_name = 'infection_tracker/game.html'
 
     def dispatch(self, request, *args, **kwargs):
         if Round.objects.all().count() == 0:
             Round.objects.create(round_number=1)
-        return super(TableView, self).dispatch(request, *args, **kwargs)
+        return super(GameView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        total_cards = InfectionCard.objects.all().count()
+        total_cards = InfectionCard.objects.filter(active=True).count()
         current_round = Round.objects.all().order_by('-round_number').first()
 
         data = []
 
         for city in City.objects.all():
-            total_city_cards = InfectionCard.objects.filter(city=city).count()
+            total_city_cards = InfectionCard.objects.filter(city=city, active=True).count()
             city_data = {'name': city.name, 'rounds': [], 'total': total_city_cards}
             for r in Round.objects.all():
                 city_data['rounds'].append(r.cards.filter(city=city).count())
@@ -57,7 +67,7 @@ class TableView(TemplateView):
 
         sorted_data = sorted(data, key=itemgetter('name'))
 
-        return super(TableView, self).get_context_data(
+        return super(GameView, self).get_context_data(
             data=sorted_data,
             rounds=Round.objects.all(),
             **kwargs
@@ -92,8 +102,43 @@ class NewRound(View):
 class AddCityView(FormView):
     template_name = 'infection_tracker/add_city.html'
     form_class = AddNewCityForm
-    success_url = reverse_lazy('infection_tracker:list')
+    success_url = reverse_lazy('infection_tracker:city_list')
 
     def form_valid(self, form):
         form.save()
         return super(AddCityView, self).form_valid(form)
+
+
+class CityListView(ListView):
+    template_name = 'infection_tracker/city_list.html'
+    model = City
+
+
+class UpdateCityCards(View):
+
+    def post(self, request, *args, **kwargs):
+        city = City.objects.get(name=request.POST.get('city'))
+        action = request.POST.get('action')
+
+        if action == 'remove':
+            if city.active_cards.count() > 0:
+                card = city.active_cards.first()
+                card.active = False
+                card.save()
+                message = 'remove success'
+            else:
+                message = 'remove failed, no active cards'
+
+        elif action == 'add':
+            # This is only for correction
+            if city.inactive_cards.count() > 0:
+                card = city.inactive_cards.first()
+                card.active = True
+                card.save()
+                message = 'add success'
+            else:
+                message = 'add failed, no inactive cards left'
+        else:
+            message = 'wrong action'
+
+        return JsonResponse({'message': message})

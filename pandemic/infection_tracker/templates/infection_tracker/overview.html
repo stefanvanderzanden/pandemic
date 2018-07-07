@@ -13,6 +13,7 @@
                 <tr>
                     <th scope="col">Game number</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Won</th>
                     <th scope="col">Play</th>
                 </tr>
                 </thead>
@@ -21,6 +22,7 @@
                     <tr>
                         <td>{{ game.pk }}</td>
                         <td>{{ game.date }}</td>
+                        <td>{{ game.won|default_if_none:"" }}</td>
                         <td><a href="{% url 'infection_tracker:game' game.pk %}" class="btn btn-info">Play</a></td>
                     </tr>
                 {% endfor %}

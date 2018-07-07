@@ -11,12 +11,12 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">City</th>
+                    <th scope="col"><a href="?sort=name">City</a></th>
                     <th scope="col">Total</th>
                     {% for round in rounds %}
                         <th scope="col">Round {{ forloop.counter }}</th>
                     {% endfor %}
-                    <th scope="col">Chance</th>
+                    <th scope="col"><a href="?sort=chance">Chance</a></th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -30,8 +30,10 @@
                         {% endfor %}
                         <td>{{ d.chance|floatformat:2 }}%</td>
                         <td>
-                            <button data-city="{{ d.name }}" class="btn btn-sm btn-info infect-city"><i
+                            <button data-city="{{ d.name }}" data-action="up" class="btn btn-sm btn-info infect-city"><i
                                     class="fas fa-plus"></i></button>
+                            <button data-city="{{ d.name }}" data-action="down" class="btn btn-sm btn-info infect-city"><i
+                                    class="fas fa-minus"></i></button>
                         </td>
                     </tr>
                 {% endfor %}
@@ -78,10 +80,11 @@
         $(document).ready(function () {
             $('.infect-city').click(function () {
                 var city = $(this).data("city")
+                var action = $(this).data("action")
                 $.ajax({
                     url: "{% url 'infection_tracker:infect_city' %}",
                     dataType: "json",
-                    data: {city: city},
+                    data: {city: city, action: action},
                     method: "POST",
                     success: function (data) {
                         location.reload()

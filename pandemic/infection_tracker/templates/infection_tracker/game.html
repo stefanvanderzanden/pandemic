@@ -14,10 +14,10 @@
                     <th scope="col"><a href="?sort=name">City</a></th>
                     <th scope="col">Total</th>
                     {% for round in rounds %}
-                        <th scope="col">Round {{ forloop.counter }}</th>
+                        <th scope="col">Round {{ forloop.counter }} ({{ round.cards.count }})</th>
                     {% endfor %}
                     <th scope="col"><a href="?sort=chance">Chance</a></th>
-                    <th scope="col">Actions</th>
+                    <th scope="col" class="text-right">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,7 +29,7 @@
                             <td>{{ round }}</td>
                         {% endfor %}
                         <td>{{ d.chance|floatformat:2 }}%</td>
-                        <td>
+                        <td class="text-right">
                             <button data-city="{{ d.name }}" data-action="up" class="btn btn-sm btn-info infect-city"><i
                                     class="fas fa-plus"></i></button>
                             <button data-city="{{ d.name }}" data-action="down" class="btn btn-sm btn-info infect-city"><i
@@ -82,7 +82,7 @@
                 var city = $(this).data("city")
                 var action = $(this).data("action")
                 $.ajax({
-                    url: "{% url 'infection_tracker:infect_city' %}",
+                    url: "{% url 'infection_tracker:infect_city' id%}",
                     dataType: "json",
                     data: {city: city, action: action},
                     method: "POST",
@@ -93,7 +93,7 @@
             })
             $('#new-round').click(function () {
                 $.ajax({
-                    url: "{% url 'infection_tracker:new_round' %}",
+                    url: "{% url 'infection_tracker:new_round' id %}",
                     method: "POST",
                     success: function (data) {
                         location.reload()

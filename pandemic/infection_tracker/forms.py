@@ -12,3 +12,14 @@ class AddNewCityForm(forms.Form):
         city = City.objects.create(name=data.get('city_name'))
         for x in range(data['number_of_cards']):
             InfectionCard.objects.create(city=city)
+
+
+class NewGameForm(forms.Form):
+    # TODO: Add characters
+    date = forms.DateField()
+
+
+class CompleteFormView(forms.Form):
+    won = forms.BooleanField()
+    number_of_cities = forms.IntegerField()
+    points = forms.IntegerField()

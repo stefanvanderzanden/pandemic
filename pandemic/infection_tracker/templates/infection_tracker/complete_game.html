@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form method="post" action="{% url 'infection_tracker:complete_game' game_id %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-info">Opslaan</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -5,6 +5,8 @@ class Game(models.Model):
     date = models.DateField()
     finished = models.BooleanField(default=False)
     won = models.NullBooleanField()
+    number_of_cities = models.IntegerField(null=True, blank=True)
+    points = models.IntegerField(null=True, blank=True)
 
 
 class City(models.Model):

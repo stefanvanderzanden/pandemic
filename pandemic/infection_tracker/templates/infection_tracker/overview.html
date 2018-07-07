@@ -3,7 +3,7 @@
     {% csrf_token %}
     <div class="row">
         <div class="col-12 text-right">
-            <a href="#" class="btn btn-warning">New game</a>
+            <a href="{% url 'infection_tracker:new_game' %}" class="btn btn-warning">New game</a>
         </div>
     </div>
     <div class="row" style="margin-top: 15px">
@@ -14,7 +14,7 @@
                     <th scope="col">Game number</th>
                     <th scope="col">Date</th>
                     <th scope="col">Won</th>
-                    <th scope="col">Play</th>
+                    <th scope="col" class="text-right">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,72 +23,18 @@
                         <td>{{ game.pk }}</td>
                         <td>{{ game.date }}</td>
                         <td>{{ game.won|default_if_none:"" }}</td>
-                        <td><a href="{% url 'infection_tracker:game' game.pk %}" class="btn btn-info">Play</a></td>
+                        <td class="text-right">
+                        {% if not game.finished %}
+                            <a href="{% url 'infection_tracker:game' game.pk %}" class="btn btn-info">Play</a>
+                            <a href="{% url 'infection_tracker:complete_game' game.pk %}" class="btn btn-success">Compleet</a>
+                        {% else %}
+                            <a href="#" class="btn btn-info">View</a>
+                        {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
-{% endblock %}
-{% block javascript %}
-    {{ block.super }}
-    <script>
-
-        function getCookie(name) {
-            var cookieValue = null
-            if (document.cookie && document.cookie !== '') {
-                var cookies = document.cookie.split(';')
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = jQuery.trim(cookies[i])
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1))
-                        break
-                    }
-                }
-            }
-            return cookieValue
-        }
-
-        var csrftoken = getCookie('csrftoken')
-
-        function csrfSafeMethod(method) {
-            // these HTTP methods do not require CSRF protection
-            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method))
-        }
-
-        $.ajaxSetup({
-            beforeSend: function (xhr, settings) {
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader("X-CSRFToken", csrftoken)
-                }
-            }
-        })
-
-        $(document).ready(function () {
-            $('.infect-city').click(function () {
-                var city = $(this).data("city")
-                $.ajax({
-                    url: "{% url 'infection_tracker:infect_city' %}",
-                    dataType: "json",
-                    data: {city: city},
-                    method: "POST",
-                    success: function (data) {
-                        location.reload()
-                    }
-                })
-            })
-            $('#new-round').click(function () {
-                $.ajax({
-                    url: "{% url 'infection_tracker:new_round' %}",
-                    method: "POST",
-                    success: function (data) {
-                        location.reload()
-                    }
-                })
-            })
-        })
-    </script>
-
 {% endblock %}

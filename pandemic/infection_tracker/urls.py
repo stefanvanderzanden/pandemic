@@ -1,19 +1,20 @@
 from django.urls import path
 
-from infection_tracker.views import InfectCity, NewRound, AddCityView, CityListView, UpdateCityCards, \
-    Overview, GameView
+from infection_tracker import views
 
 app_name = 'infection_tracker'
 
 urlpatterns = [
-    path('', Overview.as_view(), name='overview'),
+    path('', views.Overview.as_view(), name='overview'),
 
-    path('game/<int:id>', GameView.as_view(), name='game'),
+    path('city_list', views.CityListView.as_view(), name='city_list'),
+    path('add_city', views.AddCityView.as_view(), name='add_city'),
+    path('update_city', views.UpdateCityCards.as_view(), name='update_city'),
 
-    path('city_list', CityListView.as_view(), name='city_list'),
-    path('add_city', AddCityView.as_view(), name='add_city'),
-    path('update_city', UpdateCityCards.as_view(), name='update_city'),
+    path('game/new', views.NewGameView.as_view(), name='new_game'),
+    path('game/<int:id>', views.GameView.as_view(), name='game'),
 
-    path('infect_city', InfectCity.as_view(), name='infect_city'),
-    path('new_round', NewRound.as_view(), name='new_round'),
+    path('game/<int:id>/infect_city', views.InfectCity.as_view(), name='infect_city'),
+    path('game/<int:id>/new_round', views.NewRound.as_view(), name='new_round'),
+    path('game/<int:id>/complete', views.CompleteGameView.as_view(), name='complete_game'),
 ]

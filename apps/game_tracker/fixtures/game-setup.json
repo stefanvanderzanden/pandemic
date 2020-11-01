@@ -1,0 +1,1260 @@
+[
+  {
+    "model": "game_tracker.region",
+    "pk": "af",
+    "fields": {
+      "name": "Africa"
+    }
+  },
+  {
+    "model": "game_tracker.region",
+    "pk": "as",
+    "fields": {
+      "name": "Asia"
+    }
+  },
+  {
+    "model": "game_tracker.region",
+    "pk": "eu",
+    "fields": {
+      "name": "Europe"
+    }
+  },
+  {
+    "model": "game_tracker.region",
+    "pk": "na",
+    "fields": {
+      "name": "North America"
+    }
+  },
+  {
+    "model": "game_tracker.region",
+    "pk": "pr",
+    "fields": {
+      "name": "Pacific Rim"
+    }
+  },
+  {
+    "model": "game_tracker.region",
+    "pk": "sa",
+    "fields": {
+      "name": "South America"
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 1,
+    "fields": {
+      "name": "San Francisco",
+      "region": "na",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 2,
+    "fields": {
+      "name": "Toronto",
+      "region": "na",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 3,
+    "fields": {
+      "name": "New York",
+      "region": "na",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 4,
+    "fields": {
+      "name": "Washington",
+      "region": "na",
+      "affiliation": 1,
+      "has_safe_house": true,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 5,
+    "fields": {
+      "name": "Atlanta",
+      "region": "na",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 6,
+    "fields": {
+      "name": "Mexico City",
+      "region": "na",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 7,
+    "fields": {
+      "name": "Havana",
+      "region": "na",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 1
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 8,
+    "fields": {
+      "name": "Bogota",
+      "region": "sa",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 9,
+    "fields": {
+      "name": "Lima",
+      "region": "sa",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 10,
+    "fields": {
+      "name": "Sao Paulo",
+      "region": "sa",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 11,
+    "fields": {
+      "name": "Santiago",
+      "region": "sa",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 12,
+    "fields": {
+      "name": "Buenos Aires",
+      "region": "sa",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 13,
+    "fields": {
+      "name": "Madrid",
+      "region": "eu",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 14,
+    "fields": {
+      "name": "Paris",
+      "region": "eu",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 1
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 15,
+    "fields": {
+      "name": "London",
+      "region": "eu",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 16,
+    "fields": {
+      "name": "East Berlin",
+      "region": "eu",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 1
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 17,
+    "fields": {
+      "name": "Rome",
+      "region": "eu",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 18,
+    "fields": {
+      "name": "Istanbul",
+      "region": "eu",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 19,
+    "fields": {
+      "name": "Prague",
+      "region": "eu",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 20,
+    "fields": {
+      "name": "Warsaw",
+      "region": "eu",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 1
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 21,
+    "fields": {
+      "name": "Leningrad",
+      "region": "eu",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 2
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 22,
+    "fields": {
+      "name": "Kiev",
+      "region": "eu",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 1
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 23,
+    "fields": {
+      "name": "Moscow",
+      "region": "eu",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 3
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 24,
+    "fields": {
+      "name": "Algiers",
+      "region": "af",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 25,
+    "fields": {
+      "name": "Cairo",
+      "region": "af",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 1
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 26,
+    "fields": {
+      "name": "Lagos",
+      "region": "af",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 27,
+    "fields": {
+      "name": "Leopoldville",
+      "region": "af",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 28,
+    "fields": {
+      "name": "Kwartoum",
+      "region": "af",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 29,
+    "fields": {
+      "name": "JohannesBurg",
+      "region": "af",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 30,
+    "fields": {
+      "name": "Baghdad",
+      "region": "as",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 31,
+    "fields": {
+      "name": "Karachi",
+      "region": "as",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 32,
+    "fields": {
+      "name": "Riyadh",
+      "region": "as",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 33,
+    "fields": {
+      "name": "Bombay",
+      "region": "as",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 34,
+    "fields": {
+      "name": "Calcutta",
+      "region": "as",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 35,
+    "fields": {
+      "name": "Delhi",
+      "region": "as",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 36,
+    "fields": {
+      "name": "Novosibirsk",
+      "region": "as",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 37,
+    "fields": {
+      "name": "Peking",
+      "region": "as",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 1
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 38,
+    "fields": {
+      "name": "Hanoi",
+      "region": "as",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 39,
+    "fields": {
+      "name": "Bangkok",
+      "region": "as",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 40,
+    "fields": {
+      "name": "Saigon",
+      "region": "as",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 41,
+    "fields": {
+      "name": "Shanghai",
+      "region": "as",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 1
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 42,
+    "fields": {
+      "name": "Pyongyang",
+      "region": "as",
+      "affiliation": 3,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 43,
+    "fields": {
+      "name": "Tokyo",
+      "region": "pr",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 44,
+    "fields": {
+      "name": "Osaka",
+      "region": "pr",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 45,
+    "fields": {
+      "name": "Manilla",
+      "region": "pr",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 46,
+    "fields": {
+      "name": "Jakarta",
+      "region": "pr",
+      "affiliation": 2,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.city",
+    "pk": 47,
+    "fields": {
+      "name": "Sydney",
+      "region": "pr",
+      "affiliation": 1,
+      "has_safe_house": false,
+      "surveillance_level": 0
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 2,
+    "fields": {
+      "card_type": "threat",
+      "city": 1,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 3,
+    "fields": {
+      "card_type": "threat",
+      "city": 2,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 4,
+    "fields": {
+      "card_type": "threat",
+      "city": 3,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 5,
+    "fields": {
+      "card_type": "threat",
+      "city": 4,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 6,
+    "fields": {
+      "card_type": "threat",
+      "city": 5,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 7,
+    "fields": {
+      "card_type": "threat",
+      "city": 6,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 8,
+    "fields": {
+      "card_type": "threat",
+      "city": 7,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 9,
+    "fields": {
+      "card_type": "threat",
+      "city": 8,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 10,
+    "fields": {
+      "card_type": "threat",
+      "city": 9,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 11,
+    "fields": {
+      "card_type": "threat",
+      "city": 10,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 12,
+    "fields": {
+      "card_type": "threat",
+      "city": 11,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 13,
+    "fields": {
+      "card_type": "threat",
+      "city": 12,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 14,
+    "fields": {
+      "card_type": "threat",
+      "city": 13,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 15,
+    "fields": {
+      "card_type": "threat",
+      "city": 14,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 16,
+    "fields": {
+      "card_type": "threat",
+      "city": 15,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 17,
+    "fields": {
+      "card_type": "threat",
+      "city": 16,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 18,
+    "fields": {
+      "card_type": "threat",
+      "city": 17,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 19,
+    "fields": {
+      "card_type": "threat",
+      "city": 18,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 20,
+    "fields": {
+      "card_type": "threat",
+      "city": 19,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 21,
+    "fields": {
+      "card_type": "threat",
+      "city": 20,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 22,
+    "fields": {
+      "card_type": "threat",
+      "city": 21,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 23,
+    "fields": {
+      "card_type": "threat",
+      "city": 22,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 24,
+    "fields": {
+      "card_type": "threat",
+      "city": 23,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 25,
+    "fields": {
+      "card_type": "threat",
+      "city": 24,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 26,
+    "fields": {
+      "card_type": "threat",
+      "city": 25,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 27,
+    "fields": {
+      "card_type": "threat",
+      "city": 26,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 28,
+    "fields": {
+      "card_type": "threat",
+      "city": 27,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 29,
+    "fields": {
+      "card_type": "threat",
+      "city": 28,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 30,
+    "fields": {
+      "card_type": "threat",
+      "city": 29,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 31,
+    "fields": {
+      "card_type": "threat",
+      "city": 30,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 32,
+    "fields": {
+      "card_type": "threat",
+      "city": 31,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 33,
+    "fields": {
+      "card_type": "threat",
+      "city": 32,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 34,
+    "fields": {
+      "card_type": "threat",
+      "city": 33,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 35,
+    "fields": {
+      "card_type": "threat",
+      "city": 34,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 36,
+    "fields": {
+      "card_type": "threat",
+      "city": 35,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 37,
+    "fields": {
+      "card_type": "threat",
+      "city": 36,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 38,
+    "fields": {
+      "card_type": "threat",
+      "city": 37,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 39,
+    "fields": {
+      "card_type": "threat",
+      "city": 38,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 40,
+    "fields": {
+      "card_type": "threat",
+      "city": 39,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 41,
+    "fields": {
+      "card_type": "threat",
+      "city": 40,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 42,
+    "fields": {
+      "card_type": "threat",
+      "city": 41,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 43,
+    "fields": {
+      "card_type": "threat",
+      "city": 42,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 44,
+    "fields": {
+      "card_type": "threat",
+      "city": 43,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 45,
+    "fields": {
+      "card_type": "threat",
+      "city": 44,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 46,
+    "fields": {
+      "card_type": "threat",
+      "city": 45,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 47,
+    "fields": {
+      "card_type": "threat",
+      "city": 46,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.card",
+    "pk": 48,
+    "fields": {
+      "card_type": "threat",
+      "city": 47,
+      "active": true
+    }
+  },
+  {
+    "model": "game_tracker.affiliation",
+    "pk": 1,
+    "fields": {
+      "name": "Allied",
+      "logo": ""
+    }
+  },
+  {
+    "model": "game_tracker.affiliation",
+    "pk": 2,
+    "fields": {
+      "name": "Neutral",
+      "logo": ""
+    }
+  },
+  {
+    "model": "game_tracker.affiliation",
+    "pk": 3,
+    "fields": {
+      "name": "Soviet",
+      "logo": ""
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 1,
+    "fields": {
+      "city": 24
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 2,
+    "fields": {
+      "city": 28
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 3,
+    "fields": {
+      "city": 13
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 4,
+    "fields": {
+      "city": 28
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 5,
+    "fields": {
+      "city": 28
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 6,
+    "fields": {
+      "city": 35
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 7,
+    "fields": {
+      "city": 30
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 8,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 9,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 10,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 11,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 12,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 13,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 14,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 15,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 16,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 17,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 18,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 19,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 20,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 21,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 22,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 23,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 24,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 25,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 26,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 27,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 28,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 29,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 30,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 31,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 32,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 33,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 34,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 35,
+    "fields": {
+      "city": null
+    }
+  },
+  {
+    "model": "game_tracker.agent",
+    "pk": 36,
+    "fields": {
+      "city": null
+    }
+  }
+]

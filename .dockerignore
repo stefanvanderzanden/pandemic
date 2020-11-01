@@ -1,0 +1,2 @@
+# Ignore the ansible folder for deployment
+ansible/

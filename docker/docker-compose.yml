@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  web:
+    image: pandamic
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    container_name: pandamic_web
+#    command: sleep 360
+    command: >
+      bash -c "python manage.py migrate; \
+               python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./../:/app
+    ports:
+      - "17380:8000"

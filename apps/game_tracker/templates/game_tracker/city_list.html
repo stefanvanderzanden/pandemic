@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% csrf_token %}
+<div class="row">
+    <div class="col-12 text-right">
+        <a href="{% url 'game_tracker:add_city' %}" class="btn btn-warning">New city</a>
+    </div>
+</div>
+<div class="row" style="margin-top: 15px">
+    <div class="col-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">City</th>
+                    <th scope="col">Cards</th>
+                    <th scope="col">Cards active</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for city in object_list %}
+                    <tr>
+                        <td>{{ city.name }}</td>
+                        <td>{{ city.infection_cards.count }}</td>
+                        <td>{{ city.active_cards.count }}</td>
+                        <td>
+                            <button data-city="{{ city.name }}" data-action="remove"
+                                    class="btn btn-sm btn-info update-city"><i
+                                    class="fas fa-minus"></i></button>
+                            <button data-city="{{ city.name }}" data-action="add"
+                                    class="btn btn-sm btn-info update-city"><i
+                                    class="fas fa-plus"></i></button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script>
+
+        function getCookie(name) {
+            var cookieValue = null
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';')
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i])
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1))
+                        break
+                    }
+                }
+            }
+            return cookieValue
+        }
+
+        var csrftoken = getCookie('csrftoken')
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method))
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken)
+                }
+            }
+        })
+
+        $(document).ready(function () {
+            $('.update-city').click(function () {
+                var city = $(this).data("city")
+                var action = $(this).data('action')
+                $.ajax({
+                    url: "{% url 'game_tracker:update_city' %}",
+                    dataType: "json",
+                    data: {
+                        city: city,
+                        action: action
+                    },
+                    method: "POST",
+                    success: function (data) {
+                        location.reload()
+                    }
+                })
+            })
+        })
+    </script>
+{% endblock %}
